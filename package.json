@@ -4,7 +4,7 @@
   "description": "Roomate selection app",
   "main": "server.js",
   "scripts": {
-    "build": "handlebars ./public/twit.handlebars -f ./public/twitTemplate.js",
+    "build": "handlebars ./public/userCard.handlebars -f ./public/userCardTemplate.js",
     "prestart": "npm run build",
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
