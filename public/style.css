@@ -4,9 +4,23 @@ body {
   background-color: #dadada;
 }
 
+.background-image{
+  background-image: url("https://www.thevinestudios.com/img/s/v-3/p10032940-3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+   filter: blur(8px);
+  -webkit-filter: blur(8px);
+  z-index: 0;
+}
+
+.content{
+  z-index: 1;
+}
+
 .home-page{
   padding: 10px 20px;
 }
+
 .site-title {
   margin: 0;
   padding: 10px 20px;
@@ -24,11 +38,28 @@ body {
 }
 
 .user-card {
-  flex: 0 1 50%;
+  flex: 0 1 25%;
   display: flex;
   margin: 2px;
-  padding: 20px;
+  padding: 5px 5px;
   border: 1px solid #dadada;
-  border-radius: 2px;
+  border-radius: 5px;
   background-color: #fff;
+}
+
+
+.img-container{
+  border-radius: 20px;
+  padding: 2px 2px;
+  width: 30%;
+  height: 54%;
+}
+
+.user-bio{
+  padding:inherit;
+}
+
+.name{
+  padding: inherit;
+  margin: auto;
 }
