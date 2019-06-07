@@ -63,3 +63,21 @@ body {
   padding: inherit;
   margin: auto;
 }
+
+.fav-button{
+  /* height: 25px;
+  width: 25px;
+  padding: 10px; */
+  /* border-radius: 30px; */
+  /* font-size: 55px; */
+  text-align: left;
+  /* padding: 20 20; */
+}
+
+.favorite-button{
+  border-radius: 90px;
+  background-color: #ffffff;
+  font-size: 20px;
+  color: #fff50d;
+  /* border: solid 2px; */
+}

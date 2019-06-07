@@ -2,11 +2,19 @@
   {
     "picUrl": "https://www.uml.edu/Images/Roma%20Aurora%20headshot%20CROP_tcm18-285442.jpg",
     "bio": "User's bio goes here",
-    "name": "User's name goes here"
+    "name": "Bill",
+    "age": "20"
   },
   {
     "picUrl": "https://www.uml.edu/Images/Roma%20Aurora%20headshot%20CROP_tcm18-285442.jpg",
     "bio": "User's bio goes here",
-    "name": "User's name goes here"
+    "name": "Sarah",
+    "age": "20"
+  },
+  {
+    "picUrl": "https://www.uml.edu/Images/Roma%20Aurora%20headshot%20CROP_tcm18-285442.jpg",
+    "bio": "User's bio goes here",
+    "name": "Nate",
+    "age": "20"
   }
 ]
