@@ -1,0 +1,62 @@
+<!-- 
+data entries
+
+text
+name - Name
+age - Age
+email - Email address
+city - City
+Move in date  < this data is gonna be a little dificult to filter so maybe leave it out?
+rent - Maximum rent 
+picUrl - profile picture
+biography - a long version of the short bio shown in the cards
+
+boolean
+tenantlandlord - Tenant / Landlord
+bed - Shared bedroom
+bath - Shared bathroom
+pets - Pets
+kids - Kids 
+smoke - Smoking 
+availability - If offer taken
+
+major 
+music - taste in music
+
+ a filter layout so for whoever will make the search funtionn can copy:
+
+put the folowing line in the cards like in the biopage class for filtering
+ name="{{name}}" age="{{age}}" email="{{email}}" city="{{city}}" rent="{{rent}}" tenantlandlord= "{{tenantlandlord}}" bed="{{bed}}" bath="{{bath}}" pets="{{pets}}" kids="{{kids}}" smoke="{{smoke}}" availability="{{availability}}"
+-->
+
+
+<div class="biopage" name="{{name}}" age="{{age}}" email="{{email}}" city="{{city}}" rent="{{rent}}" tenantlandlord= "{{tenantlandlord}}" bed="{{bed}}" bath="{{bath}}" pets="{{pets}}" kids="{{kids}}" smoke="{{smoke}}" availability="{{availability}}">
+          <div class="biopage-contents">
+            <div class="biopage-image-container">
+              <img src= "{{picUrl}}" <!-- image link --> alt="Profile Picture">
+              <div class="biopage-detail-info-container">
+              <p>Name: <span class="biopage-name">{{name}}</span></p>
+              <p>Age: <span class="biopage-age">{{age}}</span></p>
+              <p>Email: <span class="biopage-email">{{email}}</span></p>
+              <p>City: <span class="biopage-city">{{city}}</span></p>
+              <p>Rent: <span class="biopage-rent">{{rent}}</span></p>
+
+              <p>Tenant / Landlord: <span class="biopage-tenant">{{tenantlandlord}}</span></p>
+              <p>Bed: <span class="biopage-age">{{bed}}</span></p>
+              <p>Bath: <span class="biopage-email">{{bath}}</span></p>
+              <p>Pets: <span class="biopage-city">{{pets}}</span></p>
+              <p>Kids: <span class="biopage-rent">{{kids}}</span></p>
+              <p>Smoke: <span class="biopage-city">{{smoke}}</span></p>
+              <p>Availability: <span class="biopage-rent">{{availability}}</span></p>
+              
+              </div>
+            </div>
+            <h5>
+                Profile Bio
+            </h5>
+            <p>
+                {{biography}}
+            </p>
+            <button type="button" id="favorite-button" class="piopage-favorite-button">Favorite</button>
+          </div>
+        </div>
