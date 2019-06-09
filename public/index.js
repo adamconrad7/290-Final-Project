@@ -8,9 +8,13 @@ var addFav = function() {
     username = username.substring(0, username.indexOf('\n'));
     //loops over list of favorited users to ensure that no duplicates are added:
     for(var i=0; i<favoritedUsers.length; i++){
-      if(favoritedUsers[i] !== username && i === favoritedUsers.length-1){
-          favoritedUsers.push(username);
-          break;
+      if(favoritedUsers[i] !== username ){
+        if(i === favoritedUsers.length-1){
+            favoritedUsers.push(username);
+            break;
+        }
+      }else{
+        break;
       }
     }
   console.log(favoritedUsers);

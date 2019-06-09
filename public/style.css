@@ -73,6 +73,7 @@ body {
   /* font-size: 55px; */
   text-align: left;
   /* padding: 20 20; */
+  z-index: 2;
 }
 
 .favorite-button{
@@ -80,6 +81,7 @@ body {
   background-color: #ffffff;
   font-size: 20px;
   color: #fff50d;
+
   /* border: solid 2px; */
 }
 
