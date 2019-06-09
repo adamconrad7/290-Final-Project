@@ -1,67 +1,23 @@
-/* 
-
-name - Name
-age - Age
-email - Email address
-city - City
-Move in date  < this data is gonna be a little dificult to filter so maybe leave it out?
-rent - Maximum rent 
-picUrl - profile picture
-bio - card bio
-biography - a long version of the short bio shown in the cards
-
-boolean
-tenantlandlord - do you own a place to be rented?
-bed - Shared bedroom
-bath - Shared bathroom
-pets - Pets
-kids - Kids 
-smoke - Smoking 
-availability - If offer taken
-
-*/
 [
   {
-    "picUrl": "https://www.uml.edu/Images/Roma%20Aurora%20headshot%20CROP_tcm18-285442.jpg",
+    "picUrl": "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/64-128.png",
     "bio": "User's bio goes here",
     "name": "Bill",
     "age": "20",
-    "email": "bicblunts@oregonstate.edu",
-    "city": "corpaley",
-    "rent": "2000", /* i want this to be in int form*/
-    "biography": "my loooong bio",
-
-    /* i dont know the boolean syntax, these might be wrong*/
-    "tenantlandlord": "0",
-    "bed": "0",
-    "bath": "1",
-    "pets": "0",
-    "kids": "0",
-    "smoke": "0",
-    "availability": "1"
-
-    /* 
-    this boolean example should say
-    is a tenant (0)
-    not willing to share bedroom (0)
-    willing to share bathroom (1)
-    dont have pets (0)
-    dont have kids (0)
-    dont smoke (0)
-    offer still available (1)
-    */
-
+    "favsList": []
   },
   {
-    "picUrl": "https://www.uml.edu/Images/Roma%20Aurora%20headshot%20CROP_tcm18-285442.jpg",
+    "picUrl": "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/64-128.png",
     "bio": "User's bio goes here",
     "name": "Sarah",
     "age": "20",
+    "favsList": []
   },
   {
-    "picUrl": "https://www.uml.edu/Images/Roma%20Aurora%20headshot%20CROP_tcm18-285442.jpg",
+    "picUrl": "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/64-128.png",
     "bio": "User's bio goes here",
     "name": "Nate",
     "age": "20",
+    "favsList": []
   }
 ]

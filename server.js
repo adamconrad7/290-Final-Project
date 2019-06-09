@@ -23,6 +23,13 @@ app.get('/', function (req, res) {
     });
 });
 
+app.get('/user', function (req, res) {
+  console.log('responding to request for bio page');
+    res.render('bioPage', {
+    
+    });
+});
+
 //This does nothing yet:
 app.post('/', function (req, res){
   if (req.body && req.body.favsList) {
