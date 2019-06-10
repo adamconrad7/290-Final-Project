@@ -54,18 +54,32 @@ for(var i=0; i<buttons.length; i++){
 // request.send(requestBody);
 
 //These two functions display and hide the login modal, respectively:
-var displayLogin = function(){
+var displayModal1 = function(){
   var modalBackdrop = document.getElementById('modal-backdrop');
   var loginModal = document.getElementById('login-modal');
   modalBackdrop.classList.remove('hidden');
   loginModal.classList.remove('hidden');
 }
 
-var hideLogin = function(){
+var hideModal1 = function(){
   var modalBackdrop = document.getElementById('modal-backdrop');
   var loginModal = document.getElementById('login-modal');
   modalBackdrop.classList.add('hidden');
   loginModal.classList.add('hidden');
+}
+
+var displayModal2 = function(){
+  var modalBackdrop = document.getElementById('modal-backdrop');
+  var loginModal = document.getElementById('sign-up-modal');
+  modalBackdrop.classList.add('hidden');
+  loginModal.classList.add('hidden');
+}
+
+var hideModal2 = function(){
+  var modalBackdrop = document.getElementById('modal-backdrop');
+  var loginModal = document.getElementById('sign-up-modal');
+  modalBackdrop.classList.remove('hidden');
+  loginModal.classList.remove('hidden');
 }
 
 //Global array containing all users:
@@ -84,7 +98,8 @@ var getUsername = function(){
         if(i === allUsers.length-1){
           //Here we need to bring the new user to a create profile modal where they fill in bio fields, add photos, etc
           allUsers.push(currentUsername);
-          hideLogin();
+          hideModal1();
+          displayModal2();      //just added
           break;
         }
       }else {
@@ -106,5 +121,5 @@ loginButton.addEventListener('click', displayLogin);
 
 window.addEventListener('DOMContentLoaded', function () {
   //login modal is displayed upon page load:
-  displayLogin();
+  displayModal1();
 });
