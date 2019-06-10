@@ -117,7 +117,7 @@ var enterButton = document.getElementsByClassName('modal-accept-button')[0];
 enterButton.addEventListener('click', getUsername);
 
 var loginButton = document.getElementsByClassName('login-button')[0];
-loginButton.addEventListener('click', displayLogin);
+loginButton.addEventListener('click', displayModal1);
 
 window.addEventListener('DOMContentLoaded', function () {
   //login modal is displayed upon page load:
