@@ -1,6 +1,34 @@
 <div id="modal-backdrop" class="hidden"></div>
 
-<div id="sign-in-modal" class="hidden">
+<!-- FIRST MODAL -->
+
+  <div id="login-modal" class="hidden">
+    <div class="modal-dialog">
+
+      <div class="modal-header">
+        <h3>Login</h3>
+        <!-- <button type="button" class="modal-close-button">&times;</button> -->
+      </div>
+
+      <div class="modal-body">
+        <div class="login-input-element">
+          <label for="login-text-input">Login/Sign Up:</label>
+          <input id="login-text-input"></input>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <!-- <button type="button" class="modal-cancel-button">Cancel</button> -->
+        <button type="button" class="modal-accept-button">Submit</button>
+      </div>
+
+    </div>
+  </div>
+
+
+<!-- SECOND MODAL -->
+
+<div id="sign-up-modal" class="hidden">
     <div class="modal-dialog">
 
         <div class="modal-header">
@@ -8,10 +36,10 @@
           <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
         </div>
 
-        <div class="modal-sign-in">
+        <div class="modal-in-text">
 
           <div class="modal-input-container">
-            <label for="student-name" class="input-name">Username</label>
+            <label for="user-name" class="input-name">Username</label>
             <input type="text" name="modal-username" id="modal-usernameid" class="modal-input" placeholder="userame">
           </div>
 
@@ -19,27 +47,61 @@
             <label for="pass-word" class="input-password">Password</label>
             <input type="text" name="modal-password" id="modal-passwordid" class="modal-input" placeholder="password">
           </div>
+
+          <div class="modal-input-container">
+            <label for="email" class="input-email">Email</label>
+            <input type="text" name="modal-email" id="modal-emailid" class="modal-input" placeholder="email">
+          </div>
+
+          <div class="modal-input-container">
+            <label for="city" class="input-city">City</label>
+            <input type="text" name="modal-city" id="modal-cityid" class="modal-input" placeholder="city">
+          </div>
+
+          <div class="modal-input-container">
+            <label for="rent" class="input-rent">Rent</label>
+            <input type="text" name="modal-rent" id="modal-rentid" class="modal-input" placeholder="rent">
+          </div>
+
+          <div class="modal-input-container">
+            <label for="bio" class="input-bio">BIO</label>
+            <input type="text" name="modal-bio" id="modal-bioid" class="modal-input" placeholder="bio">
+          </div>
+
 
         </div>
 
-        <div class="modal-sign-up">
+        <div class="modal-in-bool">
 
           <div class="modal-input-container">
-            <label for="student-name" class="input-name">Username</label>
-            <input type="text" name="modal-username" id="modal-usernameid" class="modal-input" placeholder="userame">
+            <label for="tenant-landlord" class="input-tenant-landlord">Are you a Tenant or Landlord?</label>
+            <input type="text" name="modal-tenant-landlord" id="modal-tenant-landlordid" class="modal-input" placeholder="tenant-landlord">
           </div>
 
           <div class="modal-input-container">
-            <label for="pass-word" class="input-password">Password</label>
-            <input type="text" name="modal-password" id="modal-passwordid" class="modal-input" placeholder="password">
+            <label for="bed" class="input-bed">Are you okay with sharing a bedroom?</label>
+            <input type="text" name="modal-bed" id="modal-bedid" class="modal-input" placeholder="bed">
           </div>
 
           <div class="modal-input-container">
-            <label for="pass-word" class="input-password">Verify Password</label>
-            <input type="text" name="modal-verify-password" id="modal-verify-passwordid" class="modal-input" placeholder="verify-password">
+            <label for="bath" class="input-bath">Are you okay with sharing a bathroom?</label>
+            <input type="text" name="modal-verify-bath" id="modal-verify-bathid" class="modal-input" placeholder="bath">
           </div>
 
-          <!-- should we make a separate sign up page? -->
+          <div class="modal-input-container">
+            <label for="pets" class="input-pets">Do you have pets?</label>
+            <input type="text" name="modal-verify-pets" id="modal-verify-petsid" class="modal-input" placeholder="pets">
+          </div>
+
+          <div class="modal-input-container">
+            <label for="kids" class="input-kids">Do you have kids?</label>
+            <input type="text" name="modal-verify-kids" id="modal-verify-kidsid" class="modal-input" placeholder="kids">
+          </div>
+
+          <div class="modal-input-container">
+            <label for="smoke" class="input-smoke">Do you smoke?</label>
+            <input type="text" name="modal-verify-smoke" id="modal-verify-smokeid" class="modal-input" placeholder="smoke">
+          </div>
 
         </div>
 
