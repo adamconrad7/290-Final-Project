@@ -4,6 +4,8 @@ var buttons = document.getElementsByClassName('fav-button');
 var favoritedUsers = [' '];
 
 var addFav = function() {
+    var button = this.firstChild.nextSibling;
+    button.classList.add('pressed');
     var username = this.parentNode.innerText;
     username = username.substring(0, username.indexOf('\n'));
     //loops over list of favorited users to ensure that no duplicates are added:
@@ -14,6 +16,12 @@ var addFav = function() {
             break;
         }
       }else{
+      //  if(i === favoritedUsers.length-1){
+            favoritedUsers.splice(i,1);
+            button.classList.remove('pressed');
+
+          ///  break;
+        //}
         break;
       }
     }

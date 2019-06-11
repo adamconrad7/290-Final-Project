@@ -90,6 +90,11 @@ body {
   /* border: solid 2px; */
 }
 
+
+.pressed{
+  background-color: #c1c1c1;
+}
+
 .login-button{
   float: right;
 }
