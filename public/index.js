@@ -71,15 +71,15 @@ var hideModal1 = function(){
 var displayModal2 = function(){
   var modalBackdrop = document.getElementById('modal-backdrop');
   var loginModal = document.getElementById('sign-up-modal');
-  modalBackdrop.classList.add('hidden');
-  loginModal.classList.add('hidden');
+  modalBackdrop.classList.remove('hidden');
+  loginModal.classList.remove('hidden');
 }
 
 var hideModal2 = function(){
   var modalBackdrop = document.getElementById('modal-backdrop');
   var loginModal = document.getElementById('sign-up-modal');
-  modalBackdrop.classList.remove('hidden');
-  loginModal.classList.remove('hidden');
+  modalBackdrop.classList.add('hidden');
+  loginModal.classList.add('hidden');
 }
 
 //Global array containing all users:
