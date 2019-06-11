@@ -1,5 +1,5 @@
 body {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   background-color: #f0f0f0;
 }
@@ -20,7 +20,7 @@ body {
 .home-page{
   padding: 10px 20px;
 }
-
+/*
 .site-title {
   margin: 0;
   padding: 10px 20px;
@@ -30,7 +30,7 @@ body {
   color: #fff;
 }
 
-
+*/
 .users-container {
   margin: 50px 10%;
   display: flex;
@@ -221,6 +221,60 @@ body {
   z-index: 1;
 }
 
+
+
+/* extra */
+
+a {
+  text-decoration: none;
+  color: #f67811;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  background-color: #DC4405;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+header a {
+  color: #fff;
+}
+
+.site-title {
+  font-family: "Roboto Slab", serif;
+  font-size: 80px;
+  font-weight: 100;
+  margin: 0 0 0 20px;
+  padding-top: 30px;
+}
+
+.site-title a:hover {
+  text-decoration: none;
+}
+
+.header-image-container img {
+  margin-top: 10px;
+  margin-left: 5px;
+  max-height: 150px;
+  max-width: 250px;
+
+}
+
+.action-button {
+  font-size: 20px;
+  color: white;
+  padding: 1px;
+  background-color: #000;
+  border: 1px solid #ababab;
+  border-radius: 5px;
+  font-weight: lighter;
+  cursor: pointer;
+}
 
 
 /*modal stuff*/
