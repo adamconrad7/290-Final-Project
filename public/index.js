@@ -121,5 +121,58 @@ loginButton.addEventListener('click', displayModal1);
 
 window.addEventListener('DOMContentLoaded', function () {
   //login modal is displayed upon page load:
-  displayModal1(); 
+  displayModal1();
 });
+
+
+var favButton = document.getElementsByClassName('favorite')[0];
+favButton.addEventListener('click',function(){
+  displayFavs();
+})
+
+var everyoneButton = document.getElementsByClassName('everyone')[0];
+everyoneButton.addEventListener('click',function(){
+  showAllUsers();
+})
+
+var displayFavs = function(){
+  allPeople = document.getElementsByClassName('user-card');
+  for(var i =0; i<allPeople.length; i++){
+    var username = allPeople[i].innerText;
+    username = username.substring(0, username.indexOf('\n'));
+    if(!checkFavs(username)){
+      console.log(username, " is not a favorite.");
+      allPeople[i].classList.add('hidden');
+    }
+  }
+}
+
+var checkFavs = function(name){
+  for(var i=0; i<favoritedUsers.length; i++){
+    if(name === favoritedUsers[i]){
+      return true;
+    }else{
+      if(i === favoritedUsers.length-1){
+        return false;
+      }
+    }
+  }
+}
+
+var showAllUsers = function(){
+  allPeople = document.getElementsByClassName('user-card');
+  for(var i =0; i<allPeople.length; i++){
+      allPeople[i].classList.remove('hidden');
+  }
+}
+//
+// var setActive = function(classname){
+//   classname.classList.add('active');
+// }
+//
+// var removeActive = function(classname){
+//   classname.classList.remove('active');
+// }
+//
+// var navlink = document.getElementsByClassName
+// navlink.addEventListener('click', setActive(navlink));

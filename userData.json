@@ -19,5 +19,26 @@
     "name": "Nate",
     "age": "20",
     "favsList": []
+  },
+  {
+    "picUrl": "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/64-128.png",
+    "bio": "User's bio goes here",
+    "name": "Jason",
+    "age": "20",
+    "favsList": []
+  },
+  {
+    "picUrl": "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/64-128.png",
+    "bio": "User's bio goes here",
+    "name": "Claire",
+    "age": "20",
+    "favsList": []
+  },
+  {
+    "picUrl": "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/64-128.png",
+    "bio": "User's bio goes here",
+    "name": "Doug",
+    "age": "20",
+    "favsList": []
   }
 ]
