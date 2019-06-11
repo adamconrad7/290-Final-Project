@@ -99,7 +99,7 @@ var getUsername = function(){
           //Here we need to bring the new user to a create profile modal where they fill in bio fields, add photos, etc
           allUsers.push(currentUsername);
           hideModal1();
-          displayModal2();      //just added
+          /*displayModal2(); */     //just added
           break;
         }
       }else {
@@ -121,5 +121,5 @@ loginButton.addEventListener('click', displayModal1);
 
 window.addEventListener('DOMContentLoaded', function () {
   //login modal is displayed upon page load:
-  displayModal1();
+  displayModal1(); 
 });
