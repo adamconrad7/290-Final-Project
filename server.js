@@ -4,6 +4,7 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectId;
 
 var app = express();
 var port = process.env.PORT || 3069;
@@ -18,7 +19,13 @@ var mongoDBName = 'cs290_reidash';
 //   --username cs290_reidash                 \
 //   --db cs290_reidash                        \
 //   --password cs290_reidash                \
-//   --collection users --jsonArray userData.json
+//   --collection users --jsonArray favArray.json
+
+// mongoimport --host classmongo.engr.oregonstate.edu \
+//   --username cs290_reidash                 \
+//   --db cs290_reidash                        \
+//   --password cs290_reidash                \
+//   --collection favArray --file favArray.json
 
 // mongo -u cs290_reidash -p cs290_reidash \
 //     classmongo.engr.oregonstate.edu/cs290_reidash
@@ -29,7 +36,7 @@ var mongoUrl = `mongodb://${mongoUser}:${mongoPassword}@${mongoHost}:${mongoPort
 
 var db = null;
 
-var usersArr = require('./userData.json');
+//var usersArr = require('./userData.json');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}) );
 app.set('view engine', 'handlebars');
@@ -66,15 +73,24 @@ app.get('/user', function (req, res) {
     });
 });
 
-//This does nothing yet:
+
 app.post('/addFav', function (req, res){
   console.log("got a post request");
   if (req.body && req.body.favsList) {
     console.log("== Client added the following users to their favorites list:");
     console.log("  - favsList:", req.body.favsList);
-
-    // Add photo to DB here.
-
+    var favsArray = db.collection("favsArray");
+    var favoritesList = {
+      favorites: req.body.favsList
+    };
+    console.log('\n','\n','\n','\n');
+    console.log(favoritesList);
+    debugger;
+    favsArray.updateOne(
+      {"_id": ObjectId("5d0184ea73e6c6016cb65c22")},
+      { $set: favoritesList}
+    );
+// db.artists.insert({ artistname: "The Tea Party" })
     res.status(200).send("favsList successfully added");
   } else {
     res.status(400).send("Requests to this path must " +
