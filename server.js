@@ -25,23 +25,14 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-//Global counter to track requests:
-var count = 0;
 
 //Catches root path and serves all twits:
 app.get('/', function (req, res) {
-  console.log('responding to request for root', count);
-  if(count == 0){
-    displayModal = true;
-  }else{
-    displayModal = false;
-  }
-  console.log(displayModal);
+  console.log('responding to request for root');
   res.render('browsePage', {
     users: usersArr,
-    displayModal: true
+
   });
-  count++;
 
 });
 
@@ -53,10 +44,11 @@ app.get('/user', function (req, res) {
 });
 
 //This does nothing yet:
-app.post('/', function (req, res){
+app.post('/addFav', function (req, res){
+  console.log("got a post request");
   if (req.body && req.body.favsList) {
     console.log("== Client added the following users to their favorites list:");
-    console.log("  - favsList:", req.params.favsList);
+    console.log("  - favsList:", req.body.favsList);
 
     // Add photo to DB here.
 
@@ -68,10 +60,6 @@ app.post('/', function (req, res){
   }
 });
 
-
-// app.listen(port, function () {
-//   console.log("== Server is listening on port", port);
-// });
 
 MongoClient.connect(mongoUrl, function (err, client) {
   if (err) {

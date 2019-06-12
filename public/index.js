@@ -13,6 +13,19 @@ var addFav = function() {
       if(favoritedUsers[i] !== username ){
         if(i === favoritedUsers.length-1){
             favoritedUsers.push(username);
+            var postRequest = new XMLHttpRequest();
+            var requestURL = '/addFav';
+            postRequest.open('POST', requestURL);
+            var requestBody = JSON.stringify({
+              favsList: favoritedUsers
+            });
+            postRequest.addEventListener('load', function(event){
+              if (event.target.status === 200) {
+
+              }
+            });
+            postRequest.setRequestHeader('Content-Type', 'application/json');
+            postRequest.send(requestBody);
             break;
         }
       }else{
@@ -22,41 +35,11 @@ var addFav = function() {
         break;
       }
     }
-  // console.log(favoritedUsers);
 };
 
 for(var i=0; i<buttons.length; i++){
     buttons[i].addEventListener('click', addFav, false);
 }
-//
-// //Sending back to server (un-implemented):
-// var request = new XMLHttpRequest();
-// var requestURL = '/' + personId + '/addFavs';
-// request.open('POST', requestURL);
-//
-// var userObj = {
-//   favsList: favoritedUsers;
-// };
-//
-// var requestBody = JSON.stringify(userObj);
-//
-// request.setRequestHeader(
-//   'Content-Type', 'application/json'
-// );
-//
-// request.addEventListener('load', function (event) {
-//   if (event.target.status !== 200) {
-//     var message = event.target.response;
-//     alert("Error storing favorites array in database: " + message);
-//   } else {
-//     /*
-//      * Update UI to indicate that photo was successfully
-//      * stored.
-//      */
-//   }
-// });
-//
-// request.send(requestBody);
 
 //These two functions display and hide the login modal, respectively:
 var displayModal1 = function(){
