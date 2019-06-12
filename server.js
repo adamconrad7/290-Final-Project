@@ -3,30 +3,52 @@ var path = require('path');
 var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
+var MongoClient = require('mongodb').MongoClient;
 
 var app = express();
 var port = process.env.PORT || 3069;
+
+var mongoHost = process.env.MONGO_HOST;
+var mongoPort = process.env.MONGO_PORT || 27017;
+var mongoUser = process.env.LOGNAME;
+var mongoPassword = process.env.MONGO_PASSWORD;
+var mongoDBName = process.env.MONGO_DB_NAME;
+
+var mongoUrl = `mongodb://@${mongoHost}:${mongoPort}/db`;
+var db = null;
 
 var usersArr = require('./userData.json');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}) );
 app.set('view engine', 'handlebars');
- 
+
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+//Global counter to track requests:
+var count = 0;
+
 //Catches root path and serves all twits:
 app.get('/', function (req, res) {
-  console.log('responding to request');
-    res.render('browsePage', {
-      users: usersArr
-    });
+  console.log('responding to request for root', count);
+  if(count == 0){
+    displayModal = true;
+  }else{
+    displayModal = false;
+  }
+  console.log(displayModal);
+  res.render('browsePage', {
+    users: usersArr,
+    displayModal: true
+  });
+  count++;
+
 });
 
 app.get('/user', function (req, res) {
   console.log('responding to request for bio page');
     res.render('bioPage', {
-    
+
     });
 });
 
@@ -47,6 +69,16 @@ app.post('/', function (req, res){
 });
 
 
-app.listen(port, function () {
-  console.log("== Server is listening on port", port);
+// app.listen(port, function () {
+//   console.log("== Server is listening on port", port);
+// });
+
+MongoClient.connect(mongoUrl, function (err, client) {
+  if (err) {
+    throw err;
+  }
+  db = client.db(mongoDBName);
+  app.listen(port, function () {
+    console.log("== Server listening on port", port);
+  });
 });

@@ -16,16 +16,13 @@ var addFav = function() {
             break;
         }
       }else{
-      //  if(i === favoritedUsers.length-1){
-            favoritedUsers.splice(i,1);
-            button.classList.remove('pressed');
-
-          ///  break;
-        //}
+        //If user exists in favorites array, remove them and make button un pressed:
+        favoritedUsers.splice(i,1);
+        button.classList.remove('pressed');
         break;
       }
     }
-  console.log(favoritedUsers);
+  // console.log(favoritedUsers);
 };
 
 for(var i=0; i<buttons.length; i++){
@@ -129,6 +126,7 @@ loginButton.addEventListener('click', displayModal1);
 
 window.addEventListener('DOMContentLoaded', function () {
   //login modal is displayed upon page load:
+  console.log("dom content loaded")
   displayModal1();
 });
 
@@ -149,7 +147,7 @@ var displayFavs = function(){
     var username = allPeople[i].innerText;
     username = username.substring(0, username.indexOf('\n'));
     if(!checkFavs(username)){
-      console.log(username, " is not a favorite.");
+      // console.log(username, " is not a favorite.");
       allPeople[i].classList.add('hidden');
     }
   }
