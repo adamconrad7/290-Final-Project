@@ -14,7 +14,19 @@ var mongoUser = 'cs290_reidash';
 var mongoPassword =  'cs290_reidash';
 var mongoDBName = 'cs290_reidash';
 
-var mongoUrl = `mongodb://@${mongoHost}:${mongoPort}/db`;
+// mongoimport --host classmongo.engr.oregonstate.edu \
+//   --username cs290_reidash                 \
+//   --db cs290_reidash                        \
+//   --password cs290_reidash                \
+//   --collection users --jsonArray userData.json
+
+// mongo -u cs290_reidash -p cs290_reidash \
+//     classmongo.engr.oregonstate.edu/cs290_reidash
+
+
+//var mongoUrl = `mongodb://@${mongoHost}:${mongoPort}/db`;
+var mongoUrl = `mongodb://${mongoUser}:${mongoPassword}@${mongoHost}:${mongoPort}/${mongoDBName}`;
+
 var db = null;
 
 var usersArr = require('./userData.json');
@@ -25,20 +37,27 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-// <<<<<<< HEAD
-// =======
-// //"nodemon": "^1.19.1",
-// >>>>>>> refs/remotes/origin/master
 
 //Catches root path and serves all twits:
 app.get('/', function (req, res) {
   console.log('responding to request for root');
-  res.render('browsePage', {
-    users: usersArr,
-
+  var users = db.collection("users");
+  var usersCursor = users.find({});
+  usersCursor.toArray(function (err, usersArr){
+    if(err){
+      throw err;
+      res.status(500).send({
+        error: "Error fetching users from DB"
+      });
+    }else{
+      console.log("Fetching users from database", users);
+      res.render('browsePage', {
+        users: usersArr,
+      });
+    }
   });
-
 });
+
 
 app.get('/user', function (req, res) {
   console.log('responding to request for bio page');
