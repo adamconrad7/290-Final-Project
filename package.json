@@ -25,7 +25,12 @@
     "express-handlebars": "^3.1.0",
     "handlebars": "^4.1.2",
     "mongo": "^0.1.0",
+<<<<<<< HEAD
     "mongodb": "^3.2.7"
+=======
+    "nodemon": "^1.19.1",
+    "path": "^0.12.7"
+>>>>>>> refs/remotes/origin/master
   },
   "devDependencies": {}
 }

@@ -25,6 +25,10 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+<<<<<<< HEAD
+=======
+//"nodemon": "^1.19.1",
+>>>>>>> refs/remotes/origin/master
 
 //Catches root path and serves all twits:
 app.get('/', function (req, res) {
