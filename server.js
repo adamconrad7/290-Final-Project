@@ -19,7 +19,7 @@ var mongoDBName = 'cs290_reidash';
 //   --username cs290_reidash                 \
 //   --db cs290_reidash                        \
 //   --password cs290_reidash                \
-//   --collection users --jsonArray favArray.json
+//   --collection users --jsonArray userData.json
 
 // mongoimport --host classmongo.engr.oregonstate.edu \
 //   --username cs290_reidash                 \
@@ -44,11 +44,29 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+// app.get('/', function(req, res, next) {
+//     console.log('responding to request for root');
+//     var users = db.collection("users");
+//     var usersCursor = users.find({});
+//     usersCursor.toArray(function (err, usersArr){
+//       if(err){
+//         throw err;
+//         res.status(500).send({
+//           error: "Error fetching users from DB"
+//         });
+//       }else{
+//         console.log("Fetching users from database", users);
+//         res.send(usersArr);
+//         next();
+//       }
+//     });
+// });
 
 //Catches root path and serves all twits:
 app.get('/', function (req, res) {
   console.log('responding to request for root');
   var users = db.collection("users");
+  //console.log("Count is: ", users.find({}).count());
   var usersCursor = users.find({});
   usersCursor.toArray(function (err, usersArr){
     if(err){
@@ -57,12 +75,38 @@ app.get('/', function (req, res) {
         error: "Error fetching users from DB"
       });
     }else{
-      console.log("Fetching users from database", users);
+      // console.log("Fetching users from database", users);
+      var usersString = JSON.stringify(usersArr);
+      // res.write(usersString);
       res.render('browsePage', {
         users: usersArr,
       });
     }
   });
+});
+
+
+//serves favorites
+app.get('/favs', function(req, res) {
+    console.log('responding to request for favs');
+    var users = db.collection("users");
+  //  var users = db.users.find( );
+
+  //ned to make this flip bool:
+    var usersCursor = users.find({fav: true});
+    usersCursor.toArray(function (err, usersArr){
+      if(err){
+        throw err;
+        res.status(500).send({
+          error: "Error fetching users from DB"
+        });
+      }else{
+        console.log("Fetching users from database", users);
+        res.render('browsePage', {
+          users: usersArr,
+        });
+      }
+    });
 });
 
 
@@ -73,23 +117,37 @@ app.get('/user', function (req, res) {
     });
 });
 
+//render browsepage but only with users who have true bool:
+app.get('/favs',function(req, res){
 
+});
+
+//this needs to recive a name and change the bool of that name to true:
 app.post('/addFav', function (req, res){
   console.log("got a post request");
-  if (req.body && req.body.favsList) {
+  if (req.body && req.body.favUser) {
     console.log("== Client added the following users to their favorites list:");
     console.log("  - favsList:", req.body.favsList);
-    var favsArray = db.collection("favsArray");
-    var favoritesList = {
-      favorites: req.body.favsList
-    };
-    console.log('\n','\n','\n','\n');
-    console.log(favoritesList);
-    debugger;
-    favsArray.updateOne(
-      {"_id": ObjectId("5d0184ea73e6c6016cb65c22")},
-      { $set: favoritesList}
-    );
+  //  var favsArray = db.collection("favsArray");
+
+    var users = db.collection("users");
+    // var favoritesList = {
+    //   favorites: req.body.favUser
+    // };
+    var username = req.body.favUser;
+    console.log(username);
+    //search userarray for name and set bool to true:
+    users.updateOne(
+      { name: username },
+      { $set: { fav: true}
+    });
+    // console.log('\n','\n','\n','\n');
+    // console.log(favoritesList);
+    // debugger;
+    // favsArray.updateOne(
+    //   {"_id": ObjectId("5d0184ea73e6c6016cb65c22")},
+    //   { $set: favoritesList}
+    // );
 // db.artists.insert({ artistname: "The Tea Party" })
     res.status(200).send("favsList successfully added");
   } else {

@@ -16,9 +16,13 @@ var addFav = function() {
             var postRequest = new XMLHttpRequest();
             var requestURL = '/addFav';
             postRequest.open('POST', requestURL);
+            // var requestBody = JSON.stringify({
+            //   favsList: favoritedUsers
+            // });
             var requestBody = JSON.stringify({
-              favsList: favoritedUsers
+              favUser: username
             });
+
             postRequest.addEventListener('load', function(event){
               if (event.target.status === 200) {
 
@@ -71,7 +75,7 @@ var hideModal2 = function(){
 }
 
 //Global array containing all users:
-var allUsers = [''];
+
 
 //Gets username from login:
 var getUsername = function(){
@@ -101,6 +105,20 @@ var getUsername = function(){
   }
 }
 
+// var postRequest = new XMLHttpRequest();
+// var requestURL = '/addFav';
+// postRequest.open('POST', requestURL);
+// var requestBody = JSON.stringify({
+//   favsList: favoritedUsers
+// });
+// postRequest.addEventListener('load', function(event){
+//   if (event.target.status === 200) {
+//
+//   }
+// });
+// postRequest.setRequestHeader('Content-Type', 'application/json');
+// postRequest.send(requestBody);
+
 var enterButton = document.getElementsByClassName('modal-accept-button')[0];
 enterButton.addEventListener('click', getUsername);
 
@@ -110,7 +128,7 @@ loginButton.addEventListener('click', displayModal1);
 window.addEventListener('DOMContentLoaded', function () {
   //login modal is displayed upon page load:
   console.log("dom content loaded")
-  displayModal1();
+  // displayModal1();
 });
 
 
@@ -148,12 +166,49 @@ var checkFavs = function(name){
   }
 }
 
+// //this need to generate a request that has a name of user being favorited:
+// var sendFavorite = function(){
+//     var postRequest = new XMLHttpRequest();
+//     var requestURL = '/favorites';
+//     postRequest.open('POST', requestURL);
+//     var requestBody = JSON.stringify({
+//       favsList: favoritedUsers
+//     });
+//     postRequest.addEventListener('load', function(event){
+//       if (event.target.status === 200) {
+//
+//       }
+//     });
+//     postRequest.setRequestHeader('Content-Type', 'application/json');
+//     postRequest.send(requestBody);
+//     break;
+// }
+
 var showAllUsers = function(){
   allPeople = document.getElementsByClassName('user-card');
   for(var i =0; i<allPeople.length; i++){
       allPeople[i].classList.remove('hidden');
   }
 }
+
+var allusers = document.getElementsByClassName('users-container')[0].children;
+// userName = allusers[0].innerText.trim();
+// userName = userName.substring(0, userName.indexOf('\n'));
+// // userName = userName.innerText;
+// // userName = userName.trim();
+// console.log(userName);
+// userName = userName.substring(0, userName.indexOf('\n'));
+// console.log(userName);
+var allUsers = [];
+
+for(var i=0; i<allusers.length-3; i++){
+   userName = allusers[i].innerText.trim();
+   userName = userName.substring(0, userName.indexOf('\n'));
+   allUsers.push(userName);
+}
+
+console.log(allUsers);
+
 //
 // var setActive = function(classname){
 //   classname.classList.add('active');
