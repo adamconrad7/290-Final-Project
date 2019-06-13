@@ -3,16 +3,35 @@ var buttons = document.getElementsByClassName('fav-button');
 
 var favoritedUsers = [' '];
 
+var allusers = document.getElementsByClassName('users-container')[0].children;
+// userName = allusers[0].innerText.trim();
+// userName = userName.substring(0, userName.indexOf('\n'));
+// // userName = userName.innerText;
+// // userName = userName.trim();
+// console.log(userName);
+// userName = userName.substring(0, userName.indexOf('\n'));
+// console.log(userName);
+var allUsers = [];
+
+for(var i=0; i<allusers.length-2; i++){
+   userName = allusers[i].innerText.trim();
+   userName = userName.substring(0, userName.indexOf('\n'));
+   allUsers.push(userName);
+}
+
+
 var addFav = function() {
+  console.log(allUsers);
     var button = this.firstChild.nextSibling;
     button.classList.add('pressed');
     var username = this.parentNode.innerText;
     username = username.substring(0, username.indexOf('\n'));
     //loops over list of favorited users to ensure that no duplicates are added:
-    for(var i=0; i<favoritedUsers.length; i++){
-      if(favoritedUsers[i] !== username ){
+    for(var i=0; i<allUsers.length; i++){
+      if(allUsers[i] !== username ){
         if(i === favoritedUsers.length-1){
             favoritedUsers.push(username);
+            console.log("new user");
             var postRequest = new XMLHttpRequest();
             var requestURL = '/addFav';
             postRequest.open('POST', requestURL);
@@ -33,9 +52,28 @@ var addFav = function() {
             break;
         }
       }else{
+        console.log("existing fav");
         //If user exists in favorites array, remove them and make button un pressed:
         favoritedUsers.splice(i,1);
         button.classList.remove('pressed');
+        var postRequest = new XMLHttpRequest();
+        var requestURL = '/removeFav';
+        postRequest.open('POST', requestURL);
+        // var requestBody = JSON.stringify({
+        //   favsList: favoritedUsers
+        // });
+        var requestBody = JSON.stringify({
+          favUser: username
+        });
+
+        postRequest.addEventListener('load', function(event){
+          if (event.target.status === 200) {
+
+          }
+        });
+        postRequest.setRequestHeader('Content-Type', 'application/json');
+        postRequest.send(requestBody);
+        break;
         break;
       }
     }
@@ -122,8 +160,8 @@ var getUsername = function(){
 var enterButton = document.getElementsByClassName('modal-accept-button')[0];
 enterButton.addEventListener('click', getUsername);
 
-var loginButton = document.getElementsByClassName('login-button')[0];
-loginButton.addEventListener('click', displayModal1);
+// var loginButton = document.getElementsByClassName('login-button')[0];
+// loginButton.addEventListener('click', displayModal1);
 
 window.addEventListener('DOMContentLoaded', function () {
   //login modal is displayed upon page load:
@@ -191,21 +229,7 @@ var showAllUsers = function(){
   }
 }
 
-var allusers = document.getElementsByClassName('users-container')[0].children;
-// userName = allusers[0].innerText.trim();
-// userName = userName.substring(0, userName.indexOf('\n'));
-// // userName = userName.innerText;
-// // userName = userName.trim();
-// console.log(userName);
-// userName = userName.substring(0, userName.indexOf('\n'));
-// console.log(userName);
-var allUsers = [];
 
-for(var i=0; i<allusers.length-3; i++){
-   userName = allusers[i].innerText.trim();
-   userName = userName.substring(0, userName.indexOf('\n'));
-   allUsers.push(userName);
-}
 
 console.log(allUsers);
 

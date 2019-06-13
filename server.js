@@ -101,7 +101,7 @@ app.get('/favs', function(req, res) {
           error: "Error fetching users from DB"
         });
       }else{
-        console.log("Fetching users from database", users);
+        // console.log("Fetching users from database", users);
         res.render('browsePage', {
           users: usersArr,
         });
@@ -127,7 +127,7 @@ app.post('/addFav', function (req, res){
   console.log("got a post request");
   if (req.body && req.body.favUser) {
     console.log("== Client added the following users to their favorites list:");
-    console.log("  - favsList:", req.body.favsList);
+    // console.log("  - favsList:", req.body.favsList);
   //  var favsArray = db.collection("favsArray");
 
     var users = db.collection("users");
@@ -135,11 +135,50 @@ app.post('/addFav', function (req, res){
     //   favorites: req.body.favUser
     // };
     var username = req.body.favUser;
-    console.log(username);
+    // console.log(username);
     //search userarray for name and set bool to true:
+    // console.log(users.find({  }));
     users.updateOne(
       { name: username },
-      { $set: { fav: true}
+      { $set: {fav:  true}
+      // { $set: { fav: true}
+    });
+    // console.log('\n','\n','\n','\n');
+    // console.log(favoritesList);
+    // debugger;
+    // favsArray.updateOne(
+    //   {"_id": ObjectId("5d0184ea73e6c6016cb65c22")},
+    //   { $set: favoritesList}
+    // );
+// db.artists.insert({ artistname: "The Tea Party" })
+    res.status(200).send("favsList successfully added");
+  } else {
+    res.status(400).send("Requests to this path must " +
+      "contain a JSON body with photoURL and caption " +
+      "fields.");
+  }
+});
+
+
+app.post('/removeFav', function (req, res){
+  console.log("got a post request");
+  if (req.body && req.body.favUser) {
+    console.log("== Client removed the following users to their favorites list:");
+    // console.log("  - favsList:", req.body.favsList);
+  //  var favsArray = db.collection("favsArray");
+
+    var users = db.collection("users");
+    // var favoritesList = {
+    //   favorites: req.body.favUser
+    // };
+    var username = req.body.favUser;
+    // console.log(username);
+    //search userarray for name and set bool to true:
+    // console.log(users.find({  }));
+    users.updateOne(
+      { name: username },
+      { $set: {fav:  false}
+      // { $set: { fav: true}
     });
     // console.log('\n','\n','\n','\n');
     // console.log(favoritesList);
