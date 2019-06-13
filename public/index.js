@@ -13,8 +13,18 @@ var allusers = document.getElementsByClassName('users-container')[0].children;
 // console.log(userName);
 var allUsers = [];
 
-for(var i=0; i<allusers.length-2; i++){
 
+
+for(var i=0; i<allusers.length-2; i++){
+  var bool = document.getElementsByClassName('fav-bool')[i].innerText;
+ bool = bool.trim();
+  console.log(bool);
+  var button = document.getElementsByClassName('favorite-button')[i];
+   if(bool === 'true'){
+     button.classList.add('pressed');
+   }else{
+     button.classList.remove('pressed');
+   }
    userName = allusers[i].innerText.trim();
    userName = userName.substring(0, userName.indexOf('\n'));
    allUsers.push(userName);
@@ -24,16 +34,19 @@ for(var i=0; i<allusers.length-2; i++){
 var addFav = function() {
     console.log(allUsers);
     var bool = this.parentNode.getElementsByClassName('fav-bool')[0].innerText;
-    console.log(bool);
+    bool = bool.trim();
+
+     console.log(bool);
     var button = this.firstChild.nextSibling;
-    button.classList.add('pressed');
+
 
     var username = this.parentNode.innerText;
     // console.log(username);
     username = username.substring(0, username.indexOf('\n'));
 
-    if(bool === 'true'){
+    if(bool == 'true'){
       console.log("existing fav");
+        // button.classList.remove('pressed');
       //If user exists in favorites array, remove them and make button un pressed:
       favoritedUsers.splice(i,1);
       button.classList.remove('pressed');
@@ -56,6 +69,7 @@ var addFav = function() {
       postRequest.send(requestBody);
       //break;
     }else{
+      // button.classList.add('pressed');
       console.log("new user");
       var postRequest = new XMLHttpRequest();
       var requestURL = '/addFav';
@@ -75,58 +89,6 @@ var addFav = function() {
       postRequest.setRequestHeader('Content-Type', 'application/json');
       postRequest.send(requestBody);
     }
-
-    // //loops over list of favorited users to ensure that no duplicates are added:
-    // for(var i=0; i<allUsers.length; i++){
-    //   if(allUsers[i] !== username ){
-    //     if(i === favoritedUsers.length-1){
-    //         favoritedUsers.push(username);
-    //         console.log("new user");
-    //         var postRequest = new XMLHttpRequest();
-    //         var requestURL = '/addFav';
-    //         postRequest.open('POST', requestURL);
-    //         // var requestBody = JSON.stringify({
-    //         //   favsList: favoritedUsers
-    //         // });
-    //         var requestBody = JSON.stringify({
-    //           favUser: username
-    //         });
-    //
-    //         postRequest.addEventListener('load', function(event){
-    //           if (event.target.status === 200) {
-    //
-    //           }
-    //         });
-    //         postRequest.setRequestHeader('Content-Type', 'application/json');
-    //         postRequest.send(requestBody);
-    //         break;
-    //     }
-    //   }else{
-    //     console.log("existing fav");
-    //     //If user exists in favorites array, remove them and make button un pressed:
-    //     favoritedUsers.splice(i,1);
-    //     button.classList.remove('pressed');
-    //     var postRequest = new XMLHttpRequest();
-    //     var requestURL = '/removeFav';
-    //     postRequest.open('POST', requestURL);
-    //     // var requestBody = JSON.stringify({
-    //     //   favsList: favoritedUsers
-    //     // });
-    //     var requestBody = JSON.stringify({
-    //       favUser: username
-    //     });
-    //
-    //     postRequest.addEventListener('load', function(event){
-    //       if (event.target.status === 200) {
-    //
-    //       }
-    //     });
-    //     postRequest.setRequestHeader('Content-Type', 'application/json');
-    //     postRequest.send(requestBody);
-    //     break;
-    //     break;
-    //   }
-    // }
 };
 
 for(var i=0; i<buttons.length; i++){
